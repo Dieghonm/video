@@ -23,6 +23,6 @@ app.listen(port, () => console.log('Example app listening on port port!'));
 // não remova esse endpoint, e para o avaliador funcionar
 
 app.get('/', (req, res) => {
-res.sendFile(__dirname + '/index.html');
+res.sendFile(__dirname + '/video.html');
 });
 
