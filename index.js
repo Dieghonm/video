@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+require 
 // const rota66 = require('./1routes/rota66');
 
 const app = express();
@@ -12,8 +13,9 @@ const io = require('socket.io')(http, {
   methods: ['GET', 'POST'], // Métodos aceitos pela url
   }});
   
-  io.on('connection', (socket) => {
+  io.on('like', (socket) => {
   console.log(`Usuário conectado. ID: ${socket.id} `);
+  // socket.on('like')
   }); 
 
 // app.use(rota66);
