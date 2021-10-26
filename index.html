@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Video</title>
+    </head>
+  <body>
+
+    <!-- https://www.devmedia.com.br/html5-video-tutorial/28790 -->
+  <div>
+    <object width="425" height="350">
+      <param name="movie" value="http://www.youtube.com/v/tIBxavsiHzM" />
+      <embed src="http://www.youtube.com/v/tIBxavsiHzM" type="application/x-shockwave-flash" width="425" height="350" />
+    </object>
+  </div>
+  <div>
+   <!-- https://html-css-js.com/html/character-codes/ -->
+     <button style="font-size: 250%" id="love">😍</button>
+    <span class="likes" id='currentLove'>0</span>
+    <span style="font-size: 250%">😦</span>
+    <span class="likes" id='currentLikes'>0</span>
+    <span style="font-size: 250%">😒</span>
+    <span class="likes" id='currentLikes'>0</span>
+    <span style="font-size: 250%">😁</span>
+    <span class="likes" id='currentLikes'>0</span>
+  </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      const button = document.querySelector('#love');
+
+      button.addEventListener('click', (e) => {
+          const loveLikesElement = document.querySelector('#currentLove');
+          let loveLikes = parseInt(loveLikesElement.innerHTML);
+          loveLikesElement.innerHTML = currentLikes + 1;
+          socket.emit('love');
+
+          return false;
+      });
+      socket.on('updateLoveLikes', (countLikes) => {
+      document.querySelector('#currentLove').innerHTML = countLikes;
+});
+    </script>
+  </body>
+
+</html>
